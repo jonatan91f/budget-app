@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor de Presupuesto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Gestor de Presupuesto</h1>
+    <h2>Balance: {{ balance }} €</h2>
+    <p>Ingresos: {{ total_ingresos }} € | Gastos: {{ total_gastos }} €</p>
+
+    <form method="POST" action="/agregar">
+        <input type="text" name="descripcion" placeholder="Descripción" required>
+        <input type="number" name="cantidad" step="0.01" placeholder="Cantidad" required>
+        <select name="tipo">
+            <option value="ingresos">Ingreso</option>
+            <option value="gastos">Gasto</option>
+        </select>
+        <button type="submit">Agregar</button>
+    </form>
+
+    <h3>Ingresos</h3>
+    <ul>
+    {% for i, ingreso in enumerate(ingresos) %}
+        <li>{{ ingreso.descripcion }} - {{ ingreso.cantidad }} € 
+        <a href="/eliminar/ingresos/{{ i }}">[Eliminar]</a></li>
+    {% endfor %}
+    </ul>
+
+    <h3>Gastos</h3>
+    <ul>
+    {% for i, gasto in enumerate(gastos) %}
+        <li>{{ gasto.descripcion }} - {{ gasto.cantidad }} € 
+        <a href="/eliminar/gastos/{{ i }}">[Eliminar]</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

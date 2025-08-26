@@ -1,0 +1,7 @@
+body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+h1 { color: #333; }
+form { margin-bottom: 20px; }
+input, select, button { margin: 5px; padding: 10px; }
+ul { list-style: none; padding: 0; }
+li { margin-bottom: 5px; }
+a { color: red; text-decoration: none; }
